@@ -1,0 +1,15 @@
+[Unit]
+Description=Talkis
+After=pipewire.service pipewire-pulse.service
+Requires=pipewire.service pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/talkis
+Restart=always
+RestartSec=5
+Environment="PULSE_RUNTIME_PATH=/run/user/%U/pulse"
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+
+[Install]
+WantedBy=default.target
